@@ -39,16 +39,14 @@ import {
   SenderWarningBox,
   SenderLockBox,
 } from "./components/SenderFields";
+import { env } from "@/config/env";
 
 const logoImage = "/logo.gif";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const WEBHOOK_URL =
-  "https://process.hairmedindia.com/webhook/48b1e48d-05ce-4ef1-a124-9f7e2537414c";
-
-const SERVER_URL =
-  "https://zqcspamakvfzvlqbunit.supabase.co/functions/v1/make-server-9c23c834";
+const WEBHOOK_URL = env.n8nWebhookUrl;
+const SERVER_URL  = env.serverUrl;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

@@ -103,7 +103,7 @@ function ProfileErrorScreen() {
           >
             app.supabase.com
           </a>
-          {" → "}project <strong>zqcspamakvfzvlqbunit</strong>{" → "}
+          {" → "}project <strong>{import.meta.env.VITE_SUPABASE_URL?.split('.')?.[0]?.replace('https://', '')}</strong>{" → "}
           <strong>Restore project</strong>, wait ~30 s, then retry.
         </p>
 

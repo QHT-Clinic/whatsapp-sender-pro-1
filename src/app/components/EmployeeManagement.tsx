@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabase-client";
-import { projectId } from "../../../utils/supabase/info";
+import { env } from "@/config/env";
 
-const API_BASE = `https://${projectId}.supabase.co/functions/v1/make-server-9c23c834`;
+const API_BASE = env.serverUrl;
 
 interface Employee {
   id: string;

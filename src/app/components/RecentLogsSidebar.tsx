@@ -14,9 +14,9 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { env } from "@/config/env";
 
-const SERVER_URL =
-  "https://zqcspamakvfzvlqbunit.supabase.co/functions/v1/make-server-9c23c834";
+const SERVER_URL = env.serverUrl;
 
 // ─── Branch color map ─────────────────────────────────────────────────────────
 

@@ -243,7 +243,7 @@ export default function Login() {
                             app.supabase.com
                           </a>
                         </li>
-                        <li>Find project <code style={{ background: "#fecaca", padding: "0 3px", borderRadius: 3 }}>zqcspamakvfzvlqbunit</code></li>
+                        <li>Find project <code style={{ background: "#fecaca", padding: "0 3px", borderRadius: 3 }}>{import.meta.env.VITE_SUPABASE_URL?.split('.')?.[0]?.replace('https://', '')}</code></li>
                         <li>Click <strong>"Restore project"</strong> if paused</li>
                         <li>Wait ~30 seconds, then try again</li>
                       </ol>

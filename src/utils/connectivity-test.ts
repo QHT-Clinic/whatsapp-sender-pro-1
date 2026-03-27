@@ -3,7 +3,7 @@
  * Tests if Supabase is reachable before attempting authentication
  */
 
-import { projectId, publicAnonKey } from "../../utils/supabase/info";
+import { env } from "@/config/env";
 
 export interface ConnectivityResult {
   success: boolean;
@@ -15,8 +15,8 @@ export interface ConnectivityResult {
  * Test if Supabase is reachable
  */
 export async function testSupabaseConnectivity(): Promise<ConnectivityResult> {
-  const supabaseUrl = `https://${projectId}.supabase.co`;
-  
+  const supabaseUrl = env.supabaseUrl;
+
   console.log("🔍 Testing Supabase connectivity...");
   console.log("📍 Target URL:", supabaseUrl);
 
@@ -154,29 +154,8 @@ export function displayConnectivityError(result: ConnectivityResult): string {
 export function validateSupabaseConfig(): ConnectivityResult {
   console.log("🔍 Validating Supabase configuration...");
 
-  if (!projectId) {
-    console.error("❌ Project ID is missing!");
-    return {
-      success: false,
-      message: "Supabase Project ID is not configured",
-      details: {
-        error: "projectId is undefined or empty",
-        location: "/utils/supabase/info.tsx",
-      },
-    };
-  }
-
-  if (!publicAnonKey) {
-    console.error("❌ Public Anon Key is missing!");
-    return {
-      success: false,
-      message: "Supabase Public Key is not configured",
-      details: {
-        error: "publicAnonKey is undefined or empty",
-        location: "/utils/supabase/info.tsx",
-      },
-    };
-  }
+  const projectId    = env.projectId;
+  const publicAnonKey = env.supabaseAnonKey;
 
   // Validate project ID format
   if (projectId.length < 10 || !/^[a-z0-9]+$/.test(projectId)) {
@@ -213,7 +192,7 @@ export function validateSupabaseConfig(): ConnectivityResult {
     message: "Configuration valid",
     details: {
       projectId,
-      url: `https://${projectId}.supabase.co`,
+      url: env.supabaseUrl,
     },
   };
 }

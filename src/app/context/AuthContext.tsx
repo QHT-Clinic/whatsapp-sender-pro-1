@@ -21,6 +21,7 @@ import React, {
 } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabaseClient";
+import { env } from "@/config/env";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -96,7 +97,7 @@ function classifyError(raw: string): string {
       "Connection error — cannot reach the server.\n" +
       "• Check your internet connection.\n" +
       "• Your Supabase project may be paused. Visit app.supabase.com → " +
-      "select project 'zqcspamakvfzvlqbunit' → click 'Restore project', " +
+      `select project '${env.projectId}' → click 'Restore project', ` +
       "wait 30 s, then try again."
     );
   }
@@ -109,8 +110,7 @@ function classifyError(raw: string): string {
 
 // ─── Server URL ───────────────────────────────────────────────────────────────
 
-const SERVER_URL =
-  "https://zqcspamakvfzvlqbunit.supabase.co/functions/v1/make-server-9c23c834";
+const SERVER_URL = env.serverUrl;
 
 // ─── Role normaliser ──────────────────────────────────────────────────────────
 // Coerces any unknown DB string to a valid UserRole, falling back to 'agent'.

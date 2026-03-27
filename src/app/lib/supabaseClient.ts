@@ -1,9 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-
-// ─── Supabase project credentials ─────────────────────────────────────────────
-const SUPABASE_URL = "https://zqcspamakvfzvlqbunit.supabase.co";
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpxY3NwYW1ha3ZmenZscWJ1bml0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMxMDk4MDYsImV4cCI6MjA3ODY4NTgwNn0.1ITkRtlnDA7HWlc1GisTZhikt6yhC41pN6O_8_hu9co";
+import { env } from "@/config/env";
 
 // ─── Custom lock — bypasses Web Locks API ─────────────────────────────────────
 //
@@ -21,7 +17,7 @@ const noOpLock = <T>(_name: string, _timeout: number, fn: () => Promise<T>): Pro
   fn();
 
 // ─── Singleton Supabase client ────────────────────────────────────────────────
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+export const supabase = createClient(env.supabaseUrl, env.supabaseAnonKey, {
   auth: {
     persistSession: true,        // session survives page refresh (localStorage)
     storageKey: "qht_agent_v2",  // unique key — avoids collisions with other apps

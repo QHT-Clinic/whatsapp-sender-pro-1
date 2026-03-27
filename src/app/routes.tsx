@@ -4,6 +4,8 @@ import WhatsAppSender from "./WhatsAppSender";
 import AdminDashboard from "./AdminDashboard";
 import Unauthorized from "./Unauthorized";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+// LOCAL TEST ONLY — remove before production migration
+import TemplateTestPage from "@/pages/TemplateTestPage";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,15 @@ export const router = createBrowserRouter([
     element: (
       <ProtectedRoute requireAdmin>
         <AdminDashboard />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    // LOCAL TEST ONLY — remove this route before production migration
+    path: "/template-test",
+    element: (
+      <ProtectedRoute>
+        <TemplateTestPage />
       </ProtectedRoute>
     ),
   },

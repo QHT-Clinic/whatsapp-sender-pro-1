@@ -20,9 +20,10 @@ import { supabase } from "./lib/supabaseClient";
 import { BRANCHES } from "./context/AuthContext";
 import { CreateAgentModal, type CreatedUser } from "./components/CreateAgentModal";
 import { ManageNumbersPanel } from "./components/ManageNumbersPanel";
+import { env } from "@/config/env";
 
 const logoImage  = "/logo.gif";
-const SERVER_URL = "https://zqcspamakvfzvlqbunit.supabase.co/functions/v1/make-server-9c23c834";
+const SERVER_URL = env.serverUrl;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
